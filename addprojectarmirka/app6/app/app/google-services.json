@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "52351843474",
+    "project_id": "bpar-d4247",
+    "storage_bucket": "bpar-d4247.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52351843474:android:c4e5b0e4cdad47e6457a4b",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52351843474-8595e5c4j89jf2h622tj7ucpe80pl7sl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGmsLuqdeeb0uynvtZyzbuPUwwUXikH1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52351843474-8595e5c4j89jf2h622tj7ucpe80pl7sl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
