@@ -22,6 +22,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class SharedPref extends AppCompatActivity {
 
@@ -93,12 +94,22 @@ public class SharedPref extends AppCompatActivity {
                 super(itemView);
                 textView =  itemView.findViewById(R.id.text_view);
                 textViewAddTime = itemView.findViewById(R.id.txt_date);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                textViewAddTime.setText(dateFormat.format(new Date())); // it will show 16/07/2013
+                Calendar cal = Calendar.getInstance();
+                Date date = cal.getTime();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                textViewAddTime.setText(dateFormat.format(date));
+               // SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+              //  textViewAddTime.setText(dateFormat.format(new Date())); // it will show 16/07/2013
 
 
             }
-
+            /*private String getDate() {
+                Calendar cal = Calendar.getInstance();
+                Date date = cal.getTime();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                return String.valueOf(dateFormat.format(date));
+            }*/
+            //https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
         }
 
 

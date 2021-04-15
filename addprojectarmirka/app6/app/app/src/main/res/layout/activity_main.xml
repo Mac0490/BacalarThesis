@@ -17,96 +17,30 @@
         android:name="com.google.ar.sceneform.ux.ArFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/gallery_layout"
+        app:layout_constraintBottom_toTopOf="@+id/textview"
+        app:layout_constraintEnd_toEndOf="@id/url_link"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintVertical_weight="9"
-        tools:ignore="NotSibling" />
+         />
+
+
+    <include layout="@layout/image"/>
+
 
     <EditText
         android:id="@+id/url_link"
-        android:layout_width="274dp"
-        android:layout_height="83dp"
+        android:layout_width="310dp"
+        android:layout_height="98dp"
         android:background="#00000000"
         android:hint="@string/please_enter_link"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/arFragment"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118"
+        app:layout_constraintVertical_bias="0.141"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="362dp"
-        android:layout_height="61dp"
-        android:scrollbars="none"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="185dp">
-
-        <LinearLayout
-            android:id="@+id/gallery_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="#05FF0000"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/arFragment"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintVertical_weight="2" />
-
-
-    </HorizontalScrollView>
-
-    <LinearLayout
-        android:id="@+id/gallery_layout_last"
-        android:layout_width="344dp"
-        android:layout_height="67dp"
-        android:background="#00FF0000"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="185dp">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/gallery_layout_Chairs"
-        android:layout_width="344dp"
-        android:layout_height="61dp"
-        android:background="#00660000"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="185dp">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/gallery_layout_Statues"
-        android:layout_width="334dp"
-        android:layout_height="66dp"
-        android:background="#00BF00FF"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="185dp" >
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/gallery_layout_Vases"
-        android:layout_width="359dp"
-        android:layout_height="62dp"
-        android:background="#0000FF80"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="185dp">
-
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -120,6 +54,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+
     <Button
         android:id="@+id/savelink_btn"
         android:layout_width="98dp"
@@ -127,10 +62,23 @@
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.134"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/build_btn"
+        android:layout_width="98dp"
+        android:layout_height="45dp"
+        android:text="Build"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18"
         tools:ignore="MissingConstraints" />
 
     <com.nightonke.boommenu.BoomMenuButton
@@ -184,6 +132,18 @@
             app:cb_pressedRingWidth="8dip" />
 
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="432dp"
+        android:orientation="horizontal"
+        android:background="#00A30808">
+        </androidx.recyclerview.widget.RecyclerView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
