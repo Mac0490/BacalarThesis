@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Augmented Reality App</string>
+    <string name="title_activity_welcome">Willkommen</string>
+    <string name="next">Nächster</string>
+    <string name="previous">Bisherige</string>
+    <string name="please_enter_link">Bitte geben Sie hier die URL-Adresse ein</string>
+    <string name="toast">Bitte geben Sie das richtige URL-Format ein</string>
+    <string name="toast_next">Bitte legen Sie Speicherberechtigungen fest.</string>
+    <string name="toast_place">Platzieren Sie Ihr 3D-Bild in der Szene</string>
+    <string name="toast_saved">Screenshot in der Galerie gespeichert.</string>
+    <string name="snackbar">Screenshot in der Galerie gespeichert.</string>
+    <string name="toast_failedtosavescrn">Screenshot konnte nicht gespeichert werden!</string>
+    <string name="exception">Fehler beim Speichern der Bitmap auf der Festplatte</string>
+    <string name="boommenuArt">Kunst</string>
+    <string name="boommenuChairs">Stühle</string>
+    <string name="boommenuPlants">Pflanzen</string>
+    <string name="boommenuDesks">Schreibtische</string>
+    <string name="boommenuLamps">Lampen</string>
+    <string name="boommenuMyUrl">Meine URL</string>
+    <string name="savelink_btn">Speichern</string>
+    <string name="build_btn">Bauen</string>
+</resources>
