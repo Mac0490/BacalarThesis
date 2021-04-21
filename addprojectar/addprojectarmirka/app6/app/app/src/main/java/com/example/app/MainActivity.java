@@ -2,16 +2,20 @@ package com.example.app;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -51,6 +55,7 @@ import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
+import com.google.ar.sceneform.ux.BaseTransformableNode;
 import com.google.ar.sceneform.ux.TransformableNode;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     BoomMenuButton boombutton;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         urlTextLinks = findViewById(R.id.url_link);
-        btBuildLink=findViewById(R.id.build_btn);
+        btBuildLink = findViewById(R.id.build_btn);
         btBuildLink.setBackgroundColor(Color.BLACK);
         btBuildLink.setTextColor(Color.GREEN);
 
@@ -123,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         myUrlImage();
         TextLinksGalleryData();
 
+        wifiConnectionAvailable();
         setUpPlane();
         BoomMenuData();
         takeScreenshot();
@@ -142,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
 
                         holder.setDetails(getApplicationContext(), model.image, model.url);
                         holder.view.setOnClickListener(view -> {
-                                progressBar = findViewById(R.id.progressbar);
-                                progressBar.setVisibility(View.VISIBLE);
-                                buildARModelAsset(Uri.parse(String.valueOf(model.url)));
+                            progressBar = findViewById(R.id.progressbar);
+                            progressBar.setVisibility(View.VISIBLE);
+                            buildARModelAsset(Uri.parse(String.valueOf(model.url)));
                         });
                     }
 
@@ -256,23 +261,21 @@ public class MainActivity extends AppCompatActivity {
         String urladress = urlTextLinks.getText().toString();
 
 
-            btBuildLink.setOnClickListener(view -> {
-                    progressBar = findViewById(R.id.progressbar);
-                    progressBar.setVisibility(View.VISIBLE);
-                    Uri.parse((urladress));
-                    buildARModelAsset(Uri.parse((urladress)));
+        btBuildLink.setOnClickListener(view -> {
+            progressBar = findViewById(R.id.progressbar);
+            progressBar.setVisibility(View.VISIBLE);
+            Uri.parse((urladress));
+            buildARModelAsset(Uri.parse((urladress)));
 
-            });
+        });
 
 
+        urlTextLinks.setOnClickListener(view -> {
 
-            urlTextLinks.setOnClickListener(view ->{
-
-                progressBar.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
 
                 }
-            );
-
+        );
 
 
     }
@@ -324,7 +327,6 @@ public class MainActivity extends AppCompatActivity {
                     snackbar.show();
 
 
-
                 } else {
                     Toast toast = Toast.makeText(MainActivity.this, R.string.toast_failedtosavescrn + copyResult, Toast.LENGTH_LONG);
                     toast.show();
@@ -349,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onBoomButtonClick(int index) {
 
-                          //  Toast.makeText(MainActivity.this,"", Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(MainActivity.this,"", Toast.LENGTH_SHORT).show();
                             switch (index) {
                                 case 0:
                                     reference = firebaseDatabase.getReference("StatuesGallery");
@@ -433,16 +435,47 @@ public class MainActivity extends AppCompatActivity {
 
     private void removeAnchorNode(Node node, AnchorNode anchorNode) {
 
-        findViewById(R.id.cleanbtn).setOnClickListener(v->{
-            arFragment.getArSceneView().getScene().callOnHierarchy(nodes->{
+        findViewById(R.id.cleanbtn).setOnClickListener(v -> {
+            arFragment.getArSceneView().getScene().callOnHierarchy(nodes -> {
                 node.setParent(anchorNode);
-                if(nodes instanceof AnchorNode){
+                if (nodes instanceof AnchorNode) {
                     ((AnchorNode) nodes).getAnchor().detach();
                 }
             });
         });
 
     }
+
+    public void checkWifi() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Please turn on internet connection to continue");
+        builder.setNegativeButton("CLOSEDIALOG", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    public boolean wifiConnectionAvailable() {
+        ConnectivityManager connectionmanager =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = connectionmanager.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnected();
+        if (isConnected) {
+            Log.d("Internet", "Connected");
+            return true;
+        } else {
+            checkWifi();
+            return false;
+        }
+    }
+
+
 
 
 }
