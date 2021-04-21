@@ -42,7 +42,7 @@ public class Screenshot {
                 outputStream.flush();
 
             } catch (IOException ex) {
-                throw new IOException("Failed to save bitmap to disk " + ex, ex);
+                throw new IOException("Failed to save bitmap to disk - ERROR " + ex, ex);
             }
 
 

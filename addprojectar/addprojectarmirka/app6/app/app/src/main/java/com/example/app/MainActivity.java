@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     BoomMenuButton boombutton;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -255,22 +256,24 @@ public class MainActivity extends AppCompatActivity {
         String urladress = urlTextLinks.getText().toString();
 
 
-        btBuildLink.setOnClickListener(view -> {
+            btBuildLink.setOnClickListener(view -> {
+                    progressBar = findViewById(R.id.progressbar);
+                    progressBar.setVisibility(View.VISIBLE);
+                    Uri.parse((urladress));
+                    buildARModelAsset(Uri.parse((urladress)));
 
-            if(!urladress.equals("") && URLUtil.isValidUrl(urladress)){
-            progressBar = findViewById(R.id.progressbar);
-            progressBar.setVisibility(View.VISIBLE);
-            Uri.parse(String.valueOf(urladress));
-            buildARModelAsset(Uri.parse(String.valueOf(urladress)));
-            } else {
+            });
 
-                Toast.makeText(getApplicationContext(), R.string.toast,
-                        Toast.LENGTH_SHORT)
-                        .show();
 
-            }
 
-        });
+            urlTextLinks.setOnClickListener(view ->{
+
+                progressBar.setVisibility(View.INVISIBLE);
+
+                }
+            );
+
+
 
     }
 
