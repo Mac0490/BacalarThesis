@@ -20,4 +20,7 @@
     <string name="savelink_btn">Uložit</string>
     <string name="build_btn">" Stavět"</string>
     <string name="boommenuMyUrl">Méurl</string>
+    <string name="cancel">Zrušení</string>
+    <string name="ok">Ok</string>
+    <string name="confirm">Potvrdit</string>
 </resources>

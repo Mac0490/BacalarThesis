@@ -20,4 +20,7 @@
     <string name="boommenuMyUrl">Meine URL</string>
     <string name="savelink_btn">Speichern</string>
     <string name="build_btn">Bauen</string>
+    <string name="cancel">Stornieren</string>
+    <string name="ok">Ok</string>
+    <string name="confirm">Bestätigen</string>
 </resources>

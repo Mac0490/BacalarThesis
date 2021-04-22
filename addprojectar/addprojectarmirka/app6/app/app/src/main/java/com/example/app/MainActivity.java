@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +39,7 @@ import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -68,6 +71,13 @@ import com.google.firebase.storage.StorageReference;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
+import com.skydoves.colorpickerview.AlphaTileView;
+import com.skydoves.colorpickerview.ColorEnvelope;
+import com.skydoves.colorpickerview.ColorPickerDialog;
+import com.skydoves.colorpickerview.ColorPickerView;
+import com.skydoves.colorpickerview.flag.BubbleFlag;
+import com.skydoves.colorpickerview.flag.FlagMode;
+import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,6 +87,7 @@ import java.io.IOException;
 
 
 import at.markushi.ui.CircleButton;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -96,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     BoomMenuButton boombutton;
+
+
 
 
     @Override
@@ -132,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         BoomMenuData();
         takeScreenshot();
     }
+
 
 
     private void displayGallery() {
@@ -274,8 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
             progressBar.setVisibility(View.INVISIBLE);
 
-                }
-        );
+        });
 
 
     }
@@ -308,7 +321,6 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         scrn.saveBitmapToDisk(bitmap, filename);
 
-                        // Skenovanie médií
                         Uri uri = Uri.parse("file://" + filename);
                         Intent i = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                         i.setData(uri);
@@ -351,7 +363,6 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onBoomButtonClick(int index) {
 
-                            //  Toast.makeText(MainActivity.this,"", Toast.LENGTH_SHORT).show();
                             switch (index) {
                                 case 0:
                                     reference = firebaseDatabase.getReference("StatuesGallery");
@@ -474,8 +485,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-
-
 
 
 }

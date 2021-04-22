@@ -20,4 +20,7 @@
     <string name="boommenuMyUrl">MyUrl</string>
     <string name="savelink_btn">Save</string>
     <string name="build_btn">Build</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="confirm">Confirm</string>
 </resources>

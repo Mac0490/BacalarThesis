@@ -20,4 +20,7 @@
     <string name="savelink_btn">" Сохранить"</string>
     <string name="build_btn">" Строить"</string>
     <string name="app_name">Дополненная реальность</string>
+    <string name="cancel">отменить</string>
+    <string name="ok">ОК</string>
+    <string name="confirm">подтверждать</string>
 </resources>

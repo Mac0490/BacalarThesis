@@ -20,4 +20,7 @@
     <string name="boommenuLamps">Lampy</string>
     <string name="boommenuMyUrl">Moje url</string>
     <string name="toast_saved">Screenshot bol stiahnutý do galérie.</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="ok">Ok</string>
+    <string name="confirm">Potvrdiť</string>
 </resources>

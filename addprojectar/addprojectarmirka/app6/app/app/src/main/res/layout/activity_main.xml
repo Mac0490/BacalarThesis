@@ -26,8 +26,10 @@
          />
 
 
-    <include layout="@layout/image"/>
-
+    <include
+        layout="@layout/image"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <EditText
         android:id="@+id/url_link"
@@ -141,7 +143,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-31dp"></androidx.recyclerview.widget.RecyclerView>
+        tools:layout_editor_absoluteX="-31dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
