@@ -38,7 +38,6 @@ public class SharedPref extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycled_view);
 
         shrdpreferences = getSharedPreferences("TEXT",Context.MODE_PRIVATE);
-        Log.d("TESTING",shrdpreferences.getString("SAVED",""));
         try {
             saved = new JSONObject(shrdpreferences.getString("SAVED",""));
         } catch (JSONException e) {
@@ -63,10 +62,10 @@ public class SharedPref extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     int position = recyclerView.getChildPosition(v);
-                    Intent intent = new Intent(SharedPref.this,
+                    Intent intentPrev = new Intent(SharedPref.this,
                             MainActivity.class);
-                    intent.putExtra("POSITION",position);
-                    startActivity(intent);
+                    intentPrev.putExtra("POSITION",position);
+                    startActivity(intentPrev);
                 }
             });
             return holder;

@@ -1,0 +1,44 @@
+Pre spustenie aplikácie na emulátore je potrebné dodra nasledujúce kroky:
+
+A. Vytvori emulátor
+
+1.Vybra Android 8.1 (Oreo) a x86 alebo x86_64 architekúru emulátoru s API 27 a neskorším revision 4 (akrchitektúry arm64-v8a a armeabi-v7 niesu v súèasnosti podporované)
+2. Skontrolujte èi je vaše virtálne zariadenie správne nakonfigurovane:
+       -   Kliknite na pokroèilé nastavenia
+       -   Uistite sa, e zadná kamera je nastavená na VirtualScene
+3. Kliknite na vytvori AVD
+4. Ïalej prejdite do nastavení emulátoru a v pokroèilıch nastaveniach Open ES API level nastavte Renderer maximum(OpenGL EC 3.1)
+5. Verzia sluieb Google Play pre AR je pravdepodobne zastaralá, preto je potrebné stiahnu si najnovšiu verziu pre emulátor:
+        - najnovšiu verziu nájdete tu: https://github.com/google-ar/arcore-android-sdk/releases
+        - nainštalova ju je moné vloením priamo do spusteného emulátoru (drag and drop) 
+        - tie cez adb príkaz ktorı umiestnite do command line v Android Studiu.       
+                  adb install -r Google_Play_Services_for_AR_1.23.0_x86_for_emulator.apk
+        (Toto je nutné, zopakova pre kadé zariadenie AVD)
+6. Spustite zariadenie a nasledujte B: Inštalácia apk
+        
+        
+B:  Inštalácia apk
+
+1. v súbore build-> apks-> sa nachádza súbor -> installapk (inštalácia pre spustenie našej aplikácie)
+2. tento súbor je moné nainštalova tak, e ho priamo vloíte do spusteného emulátora ktorı ste si v Android Studiu vytvorili v kroku A: Vytvori emulátor
+3. druhou monosou je inštalova súbor pomocou command line/powershell
+    3.a Choïte do -> Android sdk -> platform-tools
+    3.b skopírujte súbor installapk a vlote ho do -> platform-tools
+    3.c Otvote command line a chodte cez príkaz cd do adresára -> platform-tools
+    3.d potom zadajte príkaz adb devices (Vylistujú sa vám aktívne zariadenia/zariadenie)
+    3.e Ak máte aktívnych viac zariadení vyberte to správne pomocou príkazu adb -s nazovemulatoru shell. 
+    Ak je aktívne iba jedno zariadenie staèí poui príkaz adb shell
+    3.f potom sa vrátte o uroveò nišie pomocou exit príkazu v našom prípade to bol adresár -> platform-tools
+    3.g pomocou príkazu adb install installapk nainstalujete aplikáciu do emulátora.
+    Ak bolo apk nainstalované správne, objavı sa vám správa Success.
+    
+    Po nasledovaní tıchto krokov môete zaèa pracova s aplikáciou.
+    
+    
+    
+
+      
+      
+      Typy pre riešenie problémov:
+        - Ak sa spusti emulátor a zobrazí sa správa „AR Core nie je podporovaná“ skontrolujte  èi ste nstavili API Level 27 revision 4
+        - Ak emulátor nepovolí otvorenie kamery, skontrolujte èi ste správne nastavili zadnú kameru teda na VirtualScene, ako je popísané vyššie

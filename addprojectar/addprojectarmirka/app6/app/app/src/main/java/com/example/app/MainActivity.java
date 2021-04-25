@@ -63,8 +63,11 @@ import com.google.ar.sceneform.ux.TransformableNode;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
@@ -84,6 +87,7 @@ import org.json.JSONObject;
 
 
 import java.io.IOException;
+import java.net.HttpCookie;
 
 
 import at.markushi.ui.CircleButton;
@@ -200,11 +204,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getIntExtra("POSITION", -1) != -1) {
             try {
-                String s = urlTextLinks.getText().toString();
+                String st = urlTextLinks.getText().toString();
                 if (!shrdpreferences.getString("SAVED", "").equals(""))
                     saved = new JSONObject(shrdpreferences.getString("SAVED", ""));
                 urlTextLinks.setText(saved.getString("SAVED" + intent.getIntExtra("POSITION", 0)));
-                s = saved.getString("SAVED" + intent.getIntExtra("POSITION", 0));
+                st = saved.getString("SAVED" + intent.getIntExtra("POSITION", 0));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -215,12 +219,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String s = urlTextLinks.getText().toString();
-                if (!s.equals("") && URLUtil.isValidUrl(s)) {
+                String sLink = urlTextLinks.getText().toString();
+                if (!sLink.equals("") && URLUtil.isValidUrl(sLink)) {
                     try {
                         if (!shrdpreferences.getString("SAVED", "").equals("")) {
                             saved = new JSONObject(shrdpreferences.getString("SAVED", ""));
-                            saved.put("SAVED" + saved.length(), s);
+                            saved.put("SAVED" + saved.length(), sLink);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -229,8 +233,8 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("SAVED", saved.toString());
                     editor.apply();
                     urlTextLinks.setText("");
-                    Intent intent1 = new Intent(MainActivity.this, SharedPref.class);
-                    startActivity(intent1);
+                    Intent intentSharedPref = new Intent(MainActivity.this, SharedPref.class);
+                    startActivity(intentSharedPref);
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.toast,
                             Toast.LENGTH_SHORT)
@@ -306,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void takePhoto() {
         Screenshot scrn = new Screenshot();
-        final String filename = scrn.generateFilename();
+        final String filename = scrn.generateFileName();
         ArSceneView view = arFragment.getArSceneView();
 
         final Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
@@ -322,9 +326,9 @@ public class MainActivity extends AppCompatActivity {
                         scrn.saveBitmapToDisk(bitmap, filename);
 
                         Uri uri = Uri.parse("file://" + filename);
-                        Intent i = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                        i.setData(uri);
-                        sendBroadcast(i);
+                        Intent in = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                        in.setData(uri);
+                        sendBroadcast(in);
 
                     } catch (IOException e) {
                         Toast toast = Toast.makeText(MainActivity.this, R.string.toast_next, Toast.LENGTH_LONG);
@@ -427,7 +431,6 @@ public class MainActivity extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
             TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
-            Anchor newAnchor = hitResult.createAnchor();
             node.setRenderable(renderable);
             node.getScaleController().setMinScale(0.4999f);
             node.getScaleController().setMaxScale(0.5000f);
@@ -459,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkWifi() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Please turn on internet connection to continue");
+        builder.setMessage("Please turn on internet connection");
         builder.setNegativeButton("CLOSEDIALOG", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

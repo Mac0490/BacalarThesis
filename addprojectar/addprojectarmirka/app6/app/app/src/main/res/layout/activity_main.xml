@@ -79,8 +79,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintTop_toBottomOf="@+id/savelink_btn"
+        app:layout_constraintVertical_bias="0.021" />
 
     <com.nightonke.boommenu.BoomMenuButton
         android:id="@+id/boom"
@@ -143,7 +143,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-31dp">
+        tools:layout_editor_absoluteX="1dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 

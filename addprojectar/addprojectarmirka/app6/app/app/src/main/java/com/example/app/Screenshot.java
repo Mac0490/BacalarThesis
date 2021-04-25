@@ -22,16 +22,16 @@ import java.util.Date;
 
 public class Screenshot {
 
-    String generateFilename() {
+    String generateFileName() {
         String date = new SimpleDateFormat("yyyyMMddHHmmss", java.util.Locale.getDefault()).format(new Date());
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + date + "_screenshot.jpg";
     }
 
     public void saveBitmapToDisk(Bitmap bitmap, String filename) throws IOException {
 
-        File out = new File(filename);
-        if (!out.getParentFile().exists()) {
-            out.getParentFile().mkdirs();
+        File outFile = new File(filename);
+        if (!outFile.getParentFile().exists()) {
+            outFile.getParentFile().mkdirs();
         }
 
             try (FileOutputStream outputStream = new FileOutputStream(filename);
