@@ -369,29 +369,35 @@ public class MainActivity extends AppCompatActivity {
 
                             switch (index) {
                                 case 0:
+                                    wifiConnectionAvailable();
                                     reference = firebaseDatabase.getReference("StatuesGallery");
                                     displayGallery();
                                     break;
                                 case 1:
+                                    wifiConnectionAvailable();
                                     reference = firebaseDatabase.getReference("ChairsGallery");
                                     displayGallery();
 
                                     break;
                                 case 2:
+                                    wifiConnectionAvailable();
                                     reference = firebaseDatabase.getReference("PlantsGallery");
                                     displayGallery();
                                     break;
                                 case 3:
+                                    wifiConnectionAvailable();
                                     reference = firebaseDatabase.getReference("DesksGallery");
                                     displayGallery();
 
                                     break;
                                 case 4:
+                                    wifiConnectionAvailable();
                                     reference = firebaseDatabase.getReference("LampsGallery");
                                     displayGallery();
 
                                     break;
                                 case 5:
+                                    wifiConnectionAvailable();
                                     Intent intentUrl = new Intent(MainActivity.this, SharedPref.class);
                                     startActivity(intentUrl);
                                     break;
