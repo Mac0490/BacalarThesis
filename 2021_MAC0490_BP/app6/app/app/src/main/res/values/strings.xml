@@ -1,0 +1,31 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Augmented Reality App</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
+    <string name="please_enter_link">Please enter url  address here!</string>
+    <string name="toast">Please, enter right url format!</string>
+    <string name="toast_next">Please, Set storage permissions. </string>
+    <string name="toast_place">Place your 3D image to the scene!</string>
+    <string name="toast_failedtosavescrn">Failed to save screenshot!</string>
+    <string name="toast_saved">Screenshot saved to the gallery.</string>
+    <string name="snackbar">Screenshot saved to the gallery.</string>
+    <string name="exception">Failed to save bitmap to disk.</string>
+    <string name="boommenuArt">Art</string>
+    <string name="boommenuChairs">Chairs</string>
+    <string name="boommenuPlants">Plants</string>
+    <string name="boommenuDesks">Desks</string>
+    <string name="boommenuLamps">Lamps</string>
+    <string name="boommenuMyUrl">MyUrl</string>
+    <string name="savelink_btn">Save</string>
+    <string name="build_btn">Build</string>
+    <string name="cancel">cancel</string>
+    <string name="ok">ok</string>
+    <string name="confirm">confirm</string>
+</resources>

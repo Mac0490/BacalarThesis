@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplikácia pre rozšírenú realitu</string>
+    <string name="title_activity_welcome">Vitajte</string>
+    <string name="next">Ďalej</string>
+    <string name="previous">Predchádzajúce</string>
+    <string name="please_enter_link">Prosim  vyplňte url adresu!</string>
+    <string name="toast">Prosím vyplnte správny url formát.</string>
+    <string name="savelink_btn">Ulož</string>
+    <string name="build_btn">Stavaj</string>
+    <string name="toast_next">Prosím nastavte oprávnenia úložiska.</string>
+    <string name="toast_place">Umiestnite váš 3D model na scénu!</string>
+    <string name="snackbar">Screenshot bol stiahnutý do galérie.</string>
+    <string name="toast_failedtosavescrn">Chybné uloženie screenshotu.</string>
+    <string name="exception">"Chyba pri sťahovaní na disk. "</string>
+    <string name="boommenuArt">Umenie</string>
+    <string name="boommenuChairs">Stoličky</string>
+    <string name="boommenuPlants">Rastliny</string>
+    <string name="boommenuDesks">Stoly</string>
+    <string name="boommenuLamps">Lampy</string>
+    <string name="boommenuMyUrl">Moje url</string>
+    <string name="toast_saved">Screenshot bol stiahnutý do galérie.</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="ok">Ok</string>
+    <string name="confirm">Potvrdiť</string>
+</resources>
